@@ -14,41 +14,37 @@
                 class="block w-full py-2 pl-10 pr-3 leading-5 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md focus:outline-none focus:placeholder-gray-400 focus:border-blue-300 focus:shadow-outline-blue sm:text-sm"
                 placeholder="Search for songs..." type="search" autocomplete="off">
 
-                <ul class="absolute z-50 w-full mt-2 text-sm text-gray-700 bg-white border border-gray-300 divide-y divide-gray-200 rounded-md">
+                @if (strlen($search) > 2)
 
-                        <li>
+                <ul class="absolute z-50 w-full mt-2 text-sm text-gray-700 bg-white border border-gray-300 divide-y divide-gray-200 rounded-md">
+                    @forelse ($searchResults as $result)
+                    <li>
                             <a href="#" class="flex items-center px-4 py-4 transition duration-150 ease-in-out hover:bg-gray-200">
-                                <img src="https://i.pravatar.cc/100"
-                                    alt="album art" class="w-10">
+                                <img src="{{$result['artworkUrl60']}}"
+                                alt="album art" class="w-10">
                                 <div class="ml-4 leading-tight">
                                     <div class="font-semibold">
-                                            Michael Jackson
+                                        {{(isset($result['trackName'])?$result['trackName']:'')}}
                                     </div>
                                     <div class="text-gray-600">
-                                           Earth Somng
+                                        {{$result['artistName']}}
                                     </div>
                                 </div>
                             </a>
                         </li>
 
-                        <a href="#" class="flex items-center px-4 py-4 transition duration-150 ease-in-out hover:bg-gray-200">
-                            <img src="https://i.pravatar.cc/100"
-                                alt="album art" class="w-10">
-                            <div class="ml-4 leading-tight">
-                                <div class="font-semibold">
-                                        Untitled
-                                </div>
-                                <div class="text-gray-600">
-                                        No Artist
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+                        @empty
 
-                        <li class="px-4 py-4">No results found for "ryrt"</li>
+                        <li class="px-4 py-4">No results found for "{{$search}}"</li>
+
+                        @endforelse
+
+                    </ul>
+
+                        @endif
 
 
-                </ul>
+
 
         </div>
     </div>
