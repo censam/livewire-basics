@@ -1,10 +1,3 @@
-<div>
-    <span>{{$count}}</span>
-   <button wire:click='increment'>+</button>
-   <button wire:click='decrement'>-</button>
-
-
-<div class="relative flex justify-center min-h-screen bg-white items-top dark:bg-gray-900 sm:items-center sm:pt-0">
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div class="mt-8 overflow-hidden">
             <div class="grid grid-cols-1 md:grid-cols-2">
@@ -69,6 +62,4 @@
             </div>
         </div>
     </div>
-</div>
 
-</div>
